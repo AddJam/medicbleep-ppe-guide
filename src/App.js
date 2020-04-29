@@ -1,25 +1,30 @@
 import React from "react";
-import logo from "./logo.svg";
+import MainBody from './screens';
+import Header from './components/header';
+import { Container } from 'react-bootstrap';
 
-function App() {
-  return (
-    <div>
-      <header>
-        <img src={logo} alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      screen: 'Home',
+    }
+  }
+
+  /**
+   * Function: Navigate the screen
+   */
+  navigateScreen = (screen) => {
+    this.setState({ screen });
+  }
+  render(){
+    return (
+      <Container>
+        <Header navigateScreen={(data) => this.navigateScreen(data)} />
+        <MainBody {...this.state} />
+      </Container>
+    );
+  }
 }
 
 export default App;

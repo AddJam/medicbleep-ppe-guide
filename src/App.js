@@ -1,30 +1,16 @@
-import React from "react";
-import MainBody from './screens';
-import Header from './components/header';
-import { Container } from 'react-bootstrap';
+import React, { useState } from 'react'
+import MainBody from './screens'
+import Header from './components/header'
+import { Container } from 'react-bootstrap'
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      screen: 'Home',
-    }
-  }
-
-  /**
-   * Function: Navigate the screen
-   */
-  navigateScreen = (screen) => {
-    this.setState({ screen });
-  }
-  render(){
-    return (
-      <Container>
-        <Header navigateScreen={(data) => this.navigateScreen(data)} />
-        <MainBody {...this.state} />
-      </Container>
-    );
-  }
+const App = () => {
+  const [screen, navigateScreen] = useState('Home')
+  return (
+    <Container>
+      <Header navigateScreen={(data) => navigateScreen(data)} />
+      <MainBody screen={screen} />
+    </Container>
+  )
 }
 
-export default App;
+export default App

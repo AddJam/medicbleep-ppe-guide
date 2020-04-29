@@ -8,6 +8,7 @@ let config = {
   storybookEnabled: false,
 }
 
+const __DEV__ = false
 if (__DEV__) {
   config = {
     ...config,

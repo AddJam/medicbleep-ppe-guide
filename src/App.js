@@ -6,7 +6,7 @@ import Home from 'screens/Home'
 import About from 'screens/About'
 import Faq from 'screens/Faq'
 import ContactUs from 'screens/ContactUs'
-import { GlobalStyle, MainContainer } from 'assets/css/GlobalStyle';
+import { GlobalStyle, MainContainer } from 'assets/css/GlobalStyle'
 
 const App = () => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { colors } from 'config'
-import { Row } from 'react-bootstrap';
-import DoingBlock from 'components/DoingBlock';
+import { Row } from 'react-bootstrap'
+import DoingBlock from 'components/DoingBlock'
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
         <DoingBlock title="Source PPE" content="Guide to buying more" />
       </Row>
     </GraySection>
-  );
+  )
 }
 
 export default Home
@@ -27,7 +27,7 @@ export const GraySection = styled.div`
   padding: 35px 25px;
   border-radius: 12px;
   margin: 0;
-  p{
+  p {
     margin: 0;
   }
 `

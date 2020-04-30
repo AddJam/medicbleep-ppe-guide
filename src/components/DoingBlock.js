@@ -5,12 +5,12 @@ import { Col } from 'react-bootstrap'
 import { colors } from 'config'
 
 const DoingBlock = (props) => {
-  const { title, content } = props;
+  const { title, content } = props
   return (
     <Col md={4}>
-      <BlockLink to='/'>
-      <H3>{title}</H3>
-      <p>{content}</p>
+      <BlockLink to="/">
+        <H3>{title}</H3>
+        <p>{content}</p>
       </BlockLink>
     </Col>
   )
@@ -18,7 +18,7 @@ const DoingBlock = (props) => {
 
 export default DoingBlock
 
-const { blue, white } = colors;
+const { blue, white } = colors
 export const BlockLink = styled(Link)`
   background: ${white};
   display: block;
@@ -26,18 +26,17 @@ export const BlockLink = styled(Link)`
   border-radius: 3px;
   color: ${blue};
   text-decoration: none;
-  :hover{
+  :hover {
     text-decoration: none;
     color: ${blue};
-    box-shadow: 0 0 3px #CCC;
+    box-shadow: 0 0 3px #ccc;
   }
   @media (max-width: 767px) {
-    &{
+    & {
       margin-bottom: 20px;
     }
   }
-`;
-
+`
 
 export const H3 = styled.h3`
   color: ${blue};

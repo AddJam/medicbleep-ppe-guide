@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 body{
@@ -9,8 +9,8 @@ body{
 p{
     font-size: 16px;
 }
-`;
+`
 
 export const MainContainer = styled.div`
-    padding: 25px 35px;
-`;
+  padding: 25px 35px;
+`

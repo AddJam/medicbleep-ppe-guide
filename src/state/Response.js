@@ -1,9 +1,9 @@
 const initialState = {
-  responseData: {}
+  responseData: {},
 }
 
 // Types
-export const SAVE_DATA = 'saveData';
+export const SAVE_DATA = 'saveData'
 
 // Reducer
 export default (state = initialState, action = {}) => {
@@ -22,4 +22,4 @@ export const saveResponseData = (response) => ({
 })
 
 // Selectors
-export const response = state => state.Response.responseData;
+export const response = (state) => state.Response.responseData

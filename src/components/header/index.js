@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 import { HeaderSection } from './HeaderStyle'
-const logoMedicBleep = require('../../assets/images/new-logoMedicBleep.svg')
+const logoMedicBleep = require('assets/images/new-logoMedicBleep.svg')
 
 const Header = () => {
   return (

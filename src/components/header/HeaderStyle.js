@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from './../../config'
+import { colors } from 'config'
 
 const { blue, white, green } = colors
 

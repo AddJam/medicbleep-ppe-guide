@@ -1,11 +1,11 @@
 import React from 'react'
-import Header from './components/header'
+import Header from 'components/header'
 import { Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Home from './screens/Home'
-import About from './screens/About'
-import Faq from './screens/Faq'
-import ContactUs from './screens/ContactUs'
+import Home from 'screens/Home'
+import About from 'screens/About'
+import Faq from 'screens/Faq'
+import ContactUs from 'screens/ContactUs'
 
 const App = () => {
   return (

@@ -1,6 +1,4 @@
 import React from 'react'
-// import { linkTo } from '@storybook/addon-links';
-// import { Welcome } from '@storybook/react/demo';
 import PageTitle from '../components/PageTitle'
 
 export default {

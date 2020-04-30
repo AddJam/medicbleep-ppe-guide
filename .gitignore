@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log
 # Local config
 /config/local.js
+
+#Other
+package-lock.json

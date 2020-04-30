@@ -1,14 +1,24 @@
-import React, { useState } from 'react'
-import MainBody from './screens'
+import React from 'react'
 import Header from './components/header'
 import { Container } from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './screens/Home'
+import About from './screens/About'
+import Faq from './screens/Faq'
+import ContactUs from './screens/ContactUs'
 
 const App = () => {
-  const [screen, navigateScreen] = useState('Home')
   return (
     <Container>
-      <Header navigateScreen={(data) => navigateScreen(data)} />
-      <MainBody screen={screen} />
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Faq" component={Faq} />
+          <Route exact path="/ContactUs" component={ContactUs} />
+        </Switch>
+      </Router>
     </Container>
   )
 }

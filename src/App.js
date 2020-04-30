@@ -6,7 +6,7 @@ import Home from 'screens/Home'
 import About from 'screens/About'
 import Faq from 'screens/Faq'
 import ContactUs from 'screens/ContactUs'
-import { GlobalStyle } from 'assets/css/GlobalStyle';
+import { GlobalStyle, MainContainer } from 'assets/css/GlobalStyle';
 
 const App = () => {
   return (
@@ -14,12 +14,14 @@ const App = () => {
       <Router>
         <Header />
         <GlobalStyle />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/About" component={About} />
-          <Route exact path="/Faq" component={Faq} />
-          <Route exact path="/ContactUs" component={ContactUs} />
-        </Switch>
+        <MainContainer>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/About" component={About} />
+            <Route exact path="/Faq" component={Faq} />
+            <Route exact path="/ContactUs" component={ContactUs} />
+          </Switch>
+        </MainContainer>
       </Router>
     </Container>
   )

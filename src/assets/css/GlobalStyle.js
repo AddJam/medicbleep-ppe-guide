@@ -10,3 +10,7 @@ p{
     font-size: 16px;
 }
 `;
+
+export const MainContainer = styled.div`
+    padding: 25px 35px;
+`;

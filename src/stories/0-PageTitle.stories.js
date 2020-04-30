@@ -2,7 +2,7 @@ import React from 'react'
 import PageTitle from '../components/PageTitle'
 
 export default {
-  title: 'Welcome',
+  title: 'Page Title',
   component: PageTitle,
 }
 

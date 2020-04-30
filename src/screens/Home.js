@@ -1,7 +1,10 @@
 import React from 'react'
+import PageTitle from 'components/PageTitle';
 
 const Home = () => {
-  return <div>Home content here...</div>
+  return <div>
+    <PageTitle title="PPE Checklist" />
+  </div>
 }
 
 export default Home

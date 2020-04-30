@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import PpeReducer from './PpeReducer';
+import PpeReducer from './Response';
 
 const rootReducer = combineReducers({
     PpeReducer: PpeReducer,

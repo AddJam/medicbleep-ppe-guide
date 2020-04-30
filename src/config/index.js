@@ -7,7 +7,6 @@ let config = {
   colors,
   storybookEnabled: false,
 }
-const __DEV__ = true;
 
 const isDev = process.env.NODE_ENV !== 'production'
 if (isDev) {

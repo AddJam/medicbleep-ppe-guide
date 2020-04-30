@@ -7,6 +7,7 @@ let config = {
   colors,
   storybookEnabled: false,
 }
+const __DEV__ = true;
 
 if (__DEV__) {
   config = {

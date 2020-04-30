@@ -8,7 +8,8 @@ let config = {
   storybookEnabled: false,
 }
 
-if (__DEV__) {
+const isDev = process.env.NODE_ENV !== 'production'
+if (isDev) {
   config = {
     ...config,
     ...development,

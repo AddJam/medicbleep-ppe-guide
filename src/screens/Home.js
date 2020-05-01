@@ -1,24 +1,19 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { colors } from 'config'
 import { Row } from 'react-bootstrap'
 import DoingBlock from 'components/DoingBlock'
-import PageTitle from 'components/PageTitle'
 
 const Home = () => {
   return (
-    <Fragment>
-      <PageTitle title="PPE Checklist"/>
-      <H2>For health and social care settings</H2>
-      <GraySection>
-        <H2>What are you doing?</H2>
-        <Row>
-          <DoingBlock title="Putting on" content="Safely put your PPE on" />
-          <DoingBlock title="Taking off" content="Removal and disposal" />
-          <DoingBlock title="Source PPE" content="Guide to buying more" />
-        </Row>
-      </GraySection>
-    </Fragment>
+    <GraySection>
+      <H2>What are you doing?</H2>
+      <Row>
+        <DoingBlock title="Putting on" content="Safely put your PPE on" />
+        <DoingBlock title="Taking off" content="Removal and disposal" />
+        <DoingBlock title="Source PPE" content="Guide to buying more" />
+      </Row>
+    </GraySection>
   )
 }
 
@@ -31,7 +26,7 @@ export const GraySection = styled.div`
   background: ${gray};
   padding: 35px 25px;
   border-radius: 12px;
-  margin: 20px 0px;
+  margin: 0;
   p {
     margin: 0;
   }

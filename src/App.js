@@ -10,15 +10,17 @@ import { GlobalStyle, MainContainer } from 'assets/css/GlobalStyle'
 import ApiCall from 'api';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Response from 'state/Response';
+import Response ,{saveResponseData} from 'state/Response';
 
-const App = () => {
+const App = (props) => {
   const getApiResponseData = () => {
     ApiCall((response) => {
       const {data} = response;
       const {ppe_items, ppe_guides} = data;
       console.log('data recieved', ppe_items);
       console.log('data recieved', ppe_guides);
+      console.log('data props', props);
+      props.updateResponseData(data);
     });
   }
   getApiResponseData();
@@ -41,6 +43,7 @@ const App = () => {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('mapStateToProps state', state);
   const storeObject = {};
 
   return storeObject;
@@ -48,9 +51,10 @@ const mapStateToProps = (state, ownProps) => {
 
 
 function matchDispatchToProps(dispatch) {
+  console.log('response---', saveResponseData);
   return bindActionCreators(
     {
-      updateDialogsList: Response.saveResponseData,
+      updateResponseData: saveResponseData,
     }, dispatch,
   );
 }

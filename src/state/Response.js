@@ -9,7 +9,7 @@ export const SAVE_DATA = 'saveData'
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case SAVE_DATA:
-      return { ...state, started: action.payload }
+      return { ...state, responseData: action.payload }
     default:
       return state
   }

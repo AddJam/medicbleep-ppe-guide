@@ -21,6 +21,11 @@ export const saveResponseData = (response) => ({
   payload: response,
 })
 
+export const saveResponseError = (response) => ({
+  type: SAVE_DATA,
+  payload: {},
+})
+
 // Selectors
 export const ppeGuidesData = (state) => state.PpeReducer.responseData.ppe_guides
 export const ppeItemsData = (state) => state.PpeReducer.responseData.ppe_items

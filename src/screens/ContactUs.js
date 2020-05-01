@@ -9,19 +9,41 @@ const ContactUs = () => {
   const [name, setname] = useState('');
   const [email, setemail] = useState('');
   const [message, setmessage] = useState('');
+
+  const emailValidate = (email) => {
+    const chkReg = /^[_A-Za-z0-9-']+(\.[_A-Za-z0-9-']+)*@[A-Za-z0-9-]+(\.[a-z0-9-]+)*(\.[A-Za-z]{2,4})$/;
+    if (email.trim() === '') {
+      return false;
+    } if (!chkReg.test(email)) {
+      return false;
+    }
+    return true;
+  };
+
+  const isValid = () => {
+    if(name.trim().length > 5 && emailValidate(email) && message !== ''){
+      setSubmitOn(true);
+    }else{
+      setSubmitOn(false);
+    }
+  }
+
   const setValue = (event) => {
     console.log(event.target);
-    const name = event.target.getAttribute('name');
+    const eventName = event.target.getAttribute('name');
     const value = event.target.value;
-    if(name === 'Name'){
+    if(eventName === 'Name'){
       setname(value);
     }
-    if(name === 'Email'){
+    if(eventName === 'Email'){
       setemail(value);
     }
-    if(name === 'Message'){
+    if(eventName === 'Message'){
       setmessage(value);
     }
+    setTimeout(() => {
+      isValid();
+    }, 100);
   }
   return (
     <Fragment>

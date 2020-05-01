@@ -1,16 +1,15 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import PPEItems from 'components/ppeItems'
 import PageTitle from 'components/PageTitle'
 import PPEGuides from 'components/ppeGuides'
 
-const Home = (props) => {
-  const { ppeGuides, ppeItems } = props
+const Home = () => {
   return (
     <Fragment>
       <PageTitle title="PPE Checklist" />
       <p>For health and social care settings</p>
-      <PPEGuides ppeGuides={ppeGuides} />
-      <PPEItems items={ppeItems} />
+      <PPEGuides />
+      <PPEItems />
     </Fragment>
   )
 }

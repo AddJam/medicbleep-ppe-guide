@@ -22,4 +22,5 @@ export const saveResponseData = (response) => ({
 })
 
 // Selectors
-export const response = (state) => state.Response.responseData
+export const ppeGuidesData = (state) => state.PpeReducer.responseData.ppe_guides
+export const ppeItemsData = (state) => state.PpeReducer.responseData.ppe_items

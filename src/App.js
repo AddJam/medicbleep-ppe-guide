@@ -9,24 +9,18 @@ import ContactUs from 'screens/ContactUs'
 import Guide from 'screens/Guide'
 import { GlobalStyle, MainContainer } from 'assets/css/GlobalStyle'
 import ApiCall from 'api'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { useDispatch } from 'react-redux'
 import { saveResponseData } from 'state/Response'
 
-const App = (props) => {
-  const { ppeGuides, ppeItems } = props
-
+const App = () => {
+  const dispatch = useDispatch()
   const getApiResponseData = () => {
     ApiCall((response) => {
       const { data } = response
-      props.updateResponseData(data)
+      dispatch(saveResponseData(data))
     })
   }
-
-  if (!ppeGuides) {
-    getApiResponseData()
-  }
-
+  getApiResponseData()
   return (
     <Container>
       <Router>
@@ -34,46 +28,15 @@ const App = (props) => {
         <GlobalStyle />
         <MainContainer>
           <Switch>
-            <Route
-              exact
-              path="/"
-              component={() => (
-                <Home ppeGuides={ppeGuides || []} ppeItems={ppeItems || []} />
-              )}
-            />
+            <Route exact path="/" component={Home} />
             <Route exact path="/About" component={About} />
             <Route exact path="/Faq" component={Faq} />
             <Route exact path="/ContactUs" component={ContactUs} />
-            <Route
-              exact
-              path="/guide/:id"
-              component={(props) => (
-                <Guide {...props} ppeGuides={ppeGuides || []} />
-              )}
-            />
+            <Route exact path="/guide/:id" component={Guide} />
           </Switch>
         </MainContainer>
       </Router>
     </Container>
   )
 }
-
-const mapStateToProps = (state, ownProps) => {
-  const storeObject = {
-    ppeGuides: state.PpeReducer.responseData.ppe_guides,
-    ppeItems: state.PpeReducer.responseData.ppe_items,
-  }
-
-  return storeObject
-}
-
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
-      updateResponseData: saveResponseData,
-    },
-    dispatch
-  )
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(App)
+export default App

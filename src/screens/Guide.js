@@ -8,9 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { colors } from 'config'
 import ReactPlayer from 'react-player'
+import { useSelector } from 'react-redux'
+import { ppeGuidesData } from 'state/Response'
 
-const Guide = (props) => {
-  const { ppeGuides, match } = props
+const Guide = ({ match }) => {
+  const ppeGuides = useSelector(ppeGuidesData)
   const { id } = match.params
   const data = _.find(ppeGuides, ['id', parseInt(id, 0)])
   if (data) {

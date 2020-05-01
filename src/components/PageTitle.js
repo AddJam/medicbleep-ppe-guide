@@ -17,5 +17,5 @@ export const H1 = styled.h1`
   font-size: 34px;
   font-family: Arial;
   font-weight: bold;
-  margin: 0;
+  margin: 10px 0px;
 `

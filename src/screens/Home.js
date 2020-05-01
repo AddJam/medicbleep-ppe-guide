@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import PPEItems from 'components/ppeItems'
-import PageTitle from 'components/PageTitle';
-import PPEGuides from 'components/ppeGuides';
+import PageTitle from 'components/PageTitle'
+import PPEGuides from 'components/ppeGuides'
 
 const Home = (props) => {
-  const { ppeGuides, ppeItems } = props;
+  const { ppeGuides, ppeItems } = props
   return (
     <Fragment>
       <PageTitle title="PPE Checklist" />

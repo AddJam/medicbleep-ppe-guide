@@ -10,7 +10,7 @@ const PPEItems = (props) => {
   const [showModal, setShowModal] = useState(0)
 
   const getModal = (value) => {
-      console.log('getModal')
+    console.log('getModal')
     setShowModal(value)
   }
 
@@ -27,7 +27,7 @@ const PPEItems = (props) => {
           const { name, description } = fields
           return (
             <Col md={4} key={key}>
-              <BlockLink className={showModal === id? 'opened':''}>
+              <BlockLink className={showModal === id ? 'opened' : ''}>
                 <H3 onClick={() => getModal(id)}>{name}</H3>
                 <CustomModal
                   show={showModal === id}
@@ -73,7 +73,7 @@ export const BlockLink = styled.div`
   color: ${blue};
   text-decoration: none;
   position: relative;
-  &.opened{
+  &.opened {
     z-index: 1;
   }
   :hover {

@@ -20,16 +20,16 @@ const ContactUs = () => {
 }
 
 export const ContactForm = styled.div`
-    width: 40%;
-    text-align: center;
-    button{
-      width: 128px;
-      line-height: initial;
-      height: 30px;
-      border-radius: 15px;
-      border: none;
-      background-color: #00a778;
-    }
-`;
+  width: 40%;
+  text-align: center;
+  button {
+    width: 128px;
+    line-height: initial;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    background-color: #00a778;
+  }
+`
 
 export default ContactUs

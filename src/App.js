@@ -8,25 +8,25 @@ import Faq from 'screens/Faq'
 import ContactUs from 'screens/ContactUs'
 import Guide from 'screens/Guide'
 import { GlobalStyle, MainContainer } from 'assets/css/GlobalStyle'
-import ApiCall from 'api';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import Response ,{saveResponseData} from 'state/Response';
+import ApiCall from 'api'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import Response, { saveResponseData } from 'state/Response'
 
 const App = (props) => {
-  const { ppeGuides, ppeItems } = props;
+  const { ppeGuides, ppeItems } = props
   const getApiResponseData = () => {
     ApiCall((response) => {
-      const {data} = response;
-      const {ppe_items, ppe_guides} = data;
-      console.log('data recieved', ppe_items);
-      console.log('data recieved', ppe_guides);
-      console.log('data props', props);
-      props.updateResponseData(data);
-    });
+      const { data } = response
+      const { ppe_items, ppe_guides } = data
+      console.log('data recieved', ppe_items)
+      console.log('data recieved', ppe_guides)
+      console.log('data props', props)
+      props.updateResponseData(data)
+    })
   }
-  if(!ppeGuides){
-    getApiResponseData();
+  if (!ppeGuides) {
+    getApiResponseData()
   }
   return (
     <Container>
@@ -35,11 +35,21 @@ const App = (props) => {
         <GlobalStyle />
         <MainContainer>
           <Switch>
-            <Route exact path="/" component={()=><Home ppeGuides={ppeGuides||[]} ppeItems={ppeItems||[]} />} />
+            <Route
+              exact
+              path="/"
+              component={() => (
+                <Home ppeGuides={ppeGuides || []} ppeItems={ppeItems || []} />
+              )}
+            />
             <Route exact path="/About" component={About} />
             <Route exact path="/Faq" component={Faq} />
             <Route exact path="/ContactUs" component={ContactUs} />
-            <Route exact path="/guide/:id" component={() => <Guide ppeGuides={ppeGuides||[]} />} />
+            <Route
+              exact
+              path="/guide/:id"
+              component={() => <Guide ppeGuides={ppeGuides || []} />}
+            />
           </Switch>
         </MainContainer>
       </Router>
@@ -51,18 +61,18 @@ const mapStateToProps = (state, ownProps) => {
   const storeObject = {
     ppeGuides: state.PpeReducer.responseData.ppe_guides,
     ppeItems: state.PpeReducer.responseData.ppe_items,
-  };
+  }
 
-  return storeObject;
-};
-
+  return storeObject
+}
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       updateResponseData: saveResponseData,
-    }, dispatch,
-  );
+    },
+    dispatch
+  )
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(App);
+export default connect(mapStateToProps, matchDispatchToProps)(App)

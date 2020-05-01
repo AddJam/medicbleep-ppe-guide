@@ -11,9 +11,9 @@ const api = create({
   },
 })
 
-const ApiCall = (callBack) => {
-  api.get('/api/apps/14/items').then((response) => {
-    return callBack(response)
+const ApiCall = async () => {
+  return await api.get('/api/apps/14/items').then((response) => {
+    return response
   })
 }
 

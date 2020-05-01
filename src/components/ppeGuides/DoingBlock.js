@@ -5,10 +5,9 @@ import { Col } from 'react-bootstrap'
 import { colors } from 'config'
 
 const DoingBlock = (props) => {
-  console.log('DoingBlock--', props);
-  const { data } = props;
-  const { id, fields } = data;
-  const { title, short_description } = fields;
+  const { data } = props
+  const { id, fields } = data
+  const { title, short_description } = fields
   return (
     <Col md={4}>
       <BlockLink to={`/guide/${id}`}>

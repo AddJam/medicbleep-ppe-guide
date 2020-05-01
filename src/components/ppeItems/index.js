@@ -5,17 +5,14 @@ import { Row, Col } from 'react-bootstrap'
 import CustomModal from './CustomModal'
 
 const PPEItems = (props) => {
-  console.log('props-', props)
   const { items } = props
   const [showModal, setShowModal] = useState(0)
 
   const getModal = (value) => {
-      console.log('getModal')
     setShowModal(value)
   }
 
   const hideModal = () => {
-    console.log('hideModal')
     setShowModal(0)
   }
   return (
@@ -27,7 +24,7 @@ const PPEItems = (props) => {
           const { name, description } = fields
           return (
             <Col md={4} key={key}>
-              <BlockLink className={showModal === id? 'opened':''}>
+              <BlockLink className={showModal === id ? 'opened' : ''}>
                 <H3 onClick={() => getModal(id)}>{name}</H3>
                 <CustomModal
                   show={showModal === id}
@@ -73,7 +70,7 @@ export const BlockLink = styled.div`
   color: ${blue};
   text-decoration: none;
   position: relative;
-  &.opened{
+  &.opened {
     z-index: 1;
   }
   :hover {

@@ -6,7 +6,7 @@ import DoingBlock from './DoingBlock'
 import { useSelector } from 'react-redux'
 import { ppeGuidesData } from 'state/Response'
 
-const PPEGuides = (props) => {
+const PPEGuides = () => {
   const ppeGuides = useSelector(ppeGuidesData)
 
   return (

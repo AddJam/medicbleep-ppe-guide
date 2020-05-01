@@ -6,7 +6,7 @@ import CustomModal from './CustomModal'
 import { useSelector } from 'react-redux'
 import { ppeItemsData } from 'state/Response'
 
-const PPEItems = (props) => {
+const PPEItems = () => {
   const ppeItems = useSelector(ppeItemsData)
   const [showModal, setShowModal] = useState(0)
 

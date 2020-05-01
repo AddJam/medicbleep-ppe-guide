@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import { colors } from 'config'
 const closeIcon = require('assets/images/close-icon.png')
 
-const CustomModal = (props) => {
-  const { show, name, description, onHide } = props
+const CustomModal = ({show, name, description, onHide}) => {
   return (
     show && (
       <Popup>

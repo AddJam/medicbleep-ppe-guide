@@ -3,17 +3,19 @@ import styled from 'styled-components'
 import { colors } from 'config'
 import { Row } from 'react-bootstrap'
 import DoingBlock from './DoingBlock'
+import { useSelector } from 'react-redux'
+import { ppeGuidesData } from 'state/Response'
 
-const PPEGuides = (props) => {
-  const { ppeGuides } = props
+const PPEGuides = () => {
+  const ppeGuides = useSelector(ppeGuidesData)
 
   return (
     <GraySection>
       <H2>What are you doing?</H2>
       <Row>
-        {ppeGuides.map((data, key) => (
-          <DoingBlock data={data} key={key} />
-        ))}
+        {ppeGuides &&
+          ppeGuides.length > 0 &&
+          ppeGuides.map((data, key) => <DoingBlock data={data} key={key} />)}
       </Row>
     </GraySection>
   )

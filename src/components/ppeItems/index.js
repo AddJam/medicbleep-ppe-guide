@@ -3,42 +3,43 @@ import styled from 'styled-components'
 import { colors } from 'config'
 import { Row, Col } from 'react-bootstrap'
 import CustomModal from './CustomModal'
+import { useSelector } from 'react-redux'
+import { ppeItemsData } from 'state/Response'
 
-const PPEItems = (props) => {
-  console.log('props-', props)
-  const { items } = props
+const PPEItems = () => {
+  const ppeItems = useSelector(ppeItemsData)
   const [showModal, setShowModal] = useState(0)
 
   const getModal = (value) => {
-    console.log('getModal')
     setShowModal(value)
   }
 
   const hideModal = () => {
-    console.log('hideModal')
     setShowModal(0)
   }
   return (
     <GreenSection>
       <H2>PPE Overview</H2>
       <Row>
-        {items.map((data, key) => {
-          const { id, fields } = data
-          const { name, description } = fields
-          return (
-            <Col md={4} key={key}>
-              <BlockLink className={showModal === id ? 'opened' : ''}>
-                <H3 onClick={() => getModal(id)}>{name}</H3>
-                <CustomModal
-                  show={showModal === id}
-                  onHide={() => hideModal(id)}
-                  name={name}
-                  description={description}
-                />
-              </BlockLink>
-            </Col>
-          )
-        })}
+        {ppeItems &&
+          ppeItems.length > 0 &&
+          ppeItems.map((data, key) => {
+            const { id, fields } = data
+            const { name, description } = fields
+            return (
+              <Col md={4} key={key}>
+                <BlockLink className={showModal === id ? 'opened' : ''}>
+                  <H3 onClick={() => getModal(id)}>{name}</H3>
+                  <CustomModal
+                    show={showModal === id}
+                    onHide={() => hideModal(id)}
+                    name={name}
+                    description={description}
+                  />
+                </BlockLink>
+              </Col>
+            )
+          })}
       </Row>
     </GreenSection>
   )

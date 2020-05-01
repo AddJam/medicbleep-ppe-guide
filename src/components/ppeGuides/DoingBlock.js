@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom'
 import { Col } from 'react-bootstrap'
 import { colors } from 'config'
 
-const DoingBlock = (props) => {
-  console.log('DoingBlock--', props)
-  const { data } = props
+const DoingBlock = ({ data }) => {
   const { id, fields } = data
   const { title, short_description } = fields
   return (

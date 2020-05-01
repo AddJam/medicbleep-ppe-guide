@@ -10,15 +10,26 @@ const ContactUs = () => {
   const [email, setemail] = useState('');
   const [message, setmessage] = useState('');
   const setValue = (event) => {
-    console.log(event);
+    console.log(event.target);
+    const name = event.target.getAttribute('name');
+    const value = event.target.value;
+    if(name === 'Name'){
+      setname(value);
+    }
+    if(name === 'Email'){
+      setemail(value);
+    }
+    if(name === 'Message'){
+      setmessage(value);
+    }
   }
   return (
     <Fragment>
       <PageTitle title="Get in touch" />
       <ContactForm>
-        <Input type="input" value={name} onkeyup={(event) => setValue(event)} label="Name" />
-        <Input type="input" value={email} onkeyup={(event) => setValue(event)} label="Email" />
-        <Input type="textarea" value={message} onkeyup={(event) => setValue(event)} label="Message" />
+        <Input type="input" value={name} onKeyUp={(e) => setValue(e)} label="Name" />
+        <Input type="input" value={email} onKeyUp={(e) => setValue(e)} label="Email" />
+        <Input type="textarea" value={message} onKeyUp={(e) => setValue(e)} label="Message" />
         <Button disabled={!isSubmit}>Send</Button>
       </ContactForm>
     </Fragment>

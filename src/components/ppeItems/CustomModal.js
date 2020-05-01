@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { colors } from 'config'
-const closeIcon = require('assets/images/close-icon.png')
 
-const CustomModal = (props) => {
-  const { show, name, description, onHide } = props
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
+const CustomModal = ({show, name, description, onHide}) => {
   return (
     show && (
       <Popup>
         <CloseLink onClick={onHide}>
-          <img src={closeIcon} alt="" />
+        <FontAwesomeIcon icon={faTimes} />
         </CloseLink>
         <H3>{name}</H3>
         <p>{description}</p>

@@ -3,12 +3,11 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { colors } from 'config'
 
-const Input = (props) => {
-  const { label, type } = props
+const Input = ({ label, type, onKeyUp }) => {
   return (
     <Fragment>
       {label ? <Label>{label}</Label> : null}
-      {(type === 'input') ? <InputTag /> : <Textarea />}
+      {(type === 'input') ? <InputTag onKeyUp={onKeyUp} name={label} /> : <Textarea name={label} onKeyUp={onKeyUp} />}
     </Fragment>
   )
 }

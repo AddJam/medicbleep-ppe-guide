@@ -1,4 +1,12 @@
-/* eslint-disable require-yield */
-export default function* rootSaga() {
-  console.log('Root saga running')
+import { put } from 'redux-saga/effects'
+import ApiCall from 'api';
+import { saveResponseData } from 'state/Response';
+
+export default function* rootSaga(api) {
+  const response = yield ApiCall();
+  if (response.data) {
+    yield put(saveResponseData(response.data))
+  } else {
+    yield put(saveResponseData(response))
+  }
 }

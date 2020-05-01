@@ -37,6 +37,7 @@ export const Popup = styled.div`
   position: absolute;
   left: 0;
   top: 0;
+  right: -40px;
   box-shadow: 0 0 5px #AAA;
 `
 

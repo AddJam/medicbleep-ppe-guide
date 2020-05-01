@@ -9,43 +9,24 @@ import ContactUs from 'screens/ContactUs'
 import Guide from 'screens/Guide'
 import { GlobalStyle, MainContainer } from 'assets/css/GlobalStyle'
 import ApiCall from 'api';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Response ,{saveResponseData} from 'state/Response';
 
-const App = () => {
-  ApiCall(res=>{
-    console.log('res-', res)
-  })
-  const [ppeGuides, setPPEGuides] = useState([
-    {
-      id: 1,
-      fields: {
-        title: "Putting on PPE",
-        video_url: "https://www.nhsprofessionals.nhs.uk/en/e-Library/Useful-Information/COVID-19-Donning-of-Personal-Protective-Equipment",
-        short_description: "Safely put your PPE on",
-        description: "Before putting on the PPE, perform hand hygiene. Use alcohol handrub or gel or soap and water. Make sure you are hydrated and are not wearing any jewellery, bracelets, watches or stoned rings.",
-        steps: [
-          {
-            content: "Put on your plastic apron, making sure it is tied securely at the back",
-            order: "1"
-          }
-        ]
-      }
-    },
-    {
-      id: 2,
-      fields: {
-        title: "Putting on PPE",
-        video_url: "https://www.nhsprofessionals.nhs.uk/en/e-Library/Useful-Information/COVID-19-Donning-of-Personal-Protective-Equipment",
-        short_description: "Safely put your PPE on",
-        description: "Before putting on the PPE, perform hand hygiene. Use alcohol handrub or gel or soap and water. Make sure you are hydrated and are not wearing any jewellery, bracelets, watches or stoned rings.",
-        steps: [
-          {
-            content: "Put on your plastic apron, making sure it is tied securely at the back",
-            order: "1"
-          }
-        ]
-      }
-    },
-  ]);
+const App = (props) => {
+  const getApiResponseData = () => {
+    ApiCall((response) => {
+      const {data} = response;
+      const {ppe_items, ppe_guides} = data;
+      console.log('data recieved', ppe_items);
+      console.log('data recieved', ppe_guides);
+      console.log('data props', props);
+      props.updateResponseData(data);
+    });
+  }
+  getApiResponseData();
+
+  const { ppeGuides, ppeItems } = props;
   return (
     <Container>
       <Router>
@@ -53,11 +34,11 @@ const App = () => {
         <GlobalStyle />
         <MainContainer>
           <Switch>
-            <Route exact path="/" component={()=><Home ppeGuides={ppeGuides} />} />
+            <Route exact path="/" component={()=><Home ppeGuides={ppeGuides||[]} ppeItems={ppeItems||[]} />} />
             <Route exact path="/About" component={About} />
             <Route exact path="/Faq" component={Faq} />
             <Route exact path="/ContactUs" component={ContactUs} />
-            <Route exact path="/guide/:id" component={<Guide ppeGuides={ppeGuides} />} />
+            <Route exact path="/guide/:id" component={<Guide ppeGuides={ppeGuides||[]} />} />
           </Switch>
         </MainContainer>
       </Router>
@@ -65,4 +46,24 @@ const App = () => {
   )
 }
 
-export default App
+const mapStateToProps = (state, ownProps) => {
+  console.log('mapStateToProps state', state);
+  const storeObject = {
+    ppeGuides: state.PpeReducer.responseData.ppe_guides,
+    ppeItems: state.PpeReducer.responseData.ppe_items,
+  };
+
+  return storeObject;
+};
+
+
+function matchDispatchToProps(dispatch) {
+  console.log('response---', saveResponseData);
+  return bindActionCreators(
+    {
+      updateResponseData: saveResponseData,
+    }, dispatch,
+  );
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(App);

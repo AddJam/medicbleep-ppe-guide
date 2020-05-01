@@ -5,12 +5,12 @@ import { colors } from 'config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const CustomModal = ({show, name, description, onHide}) => {
+const CustomModal = ({ show, name, description, onHide }) => {
   return (
     show && (
       <Popup>
         <CloseLink onClick={onHide}>
-        <FontAwesomeIcon icon={faTimes} />
+          <FontAwesomeIcon icon={faTimes} />
         </CloseLink>
         <H3>{name}</H3>
         <p>{description}</p>
@@ -40,6 +40,9 @@ export const Popup = styled.div`
   top: 0;
   right: -40px;
   box-shadow: 0 0 5px #aaa;
+  @media (max-width: 767px) {
+    right: 0;
+  }
 `
 
 export const CloseLink = styled.div`

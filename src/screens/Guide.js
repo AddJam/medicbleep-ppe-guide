@@ -75,5 +75,9 @@ export const VideoContainer = styled.div`
   margin: 40px 0 35px 0;
   > div {
     margin: 0 auto;
+    @media (max-width: 767px) {
+      max-width: 100%;
+      max-height: 240px;
+    }
   }
 `

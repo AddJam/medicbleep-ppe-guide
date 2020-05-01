@@ -11,10 +11,10 @@ const api = create({
   },
 })
 
-const ApiCall = async() => {
-  return await (api.get('/api/apps/14/items').then((response) => {
-    return (response)
-  }))
+const ApiCall = async () => {
+  return await api.get('/api/apps/14/items').then((response) => {
+    return response
+  })
 }
 
 export default ApiCall

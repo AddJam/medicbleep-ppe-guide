@@ -14,8 +14,12 @@ const { blue } = colors
 
 export const H1 = styled.h1`
   color: ${blue};
-  font-size: 34px;
   font-family: Arial;
-  font-weight: bold;
   margin: 10px 0px;
+  font-size: 44px;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -1.06px;
 `

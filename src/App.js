@@ -14,6 +14,7 @@ import { bindActionCreators } from 'redux';
 import Response ,{saveResponseData} from 'state/Response';
 
 const App = (props) => {
+  const { ppeGuides, ppeItems } = props;
   const getApiResponseData = () => {
     ApiCall((response) => {
       const {data} = response;
@@ -24,9 +25,9 @@ const App = (props) => {
       props.updateResponseData(data);
     });
   }
-  getApiResponseData();
-
-  const { ppeGuides, ppeItems } = props;
+  if(!ppeGuides){
+    getApiResponseData();
+  }
   return (
     <Container>
       <Router>
@@ -38,7 +39,7 @@ const App = (props) => {
             <Route exact path="/About" component={About} />
             <Route exact path="/Faq" component={Faq} />
             <Route exact path="/ContactUs" component={ContactUs} />
-            <Route exact path="/guide/:id" component={<Guide ppeGuides={ppeGuides||[]} />} />
+            <Route exact path="/guide/:id" component={() => <Guide ppeGuides={ppeGuides||[]} />} />
           </Switch>
         </MainContainer>
       </Router>
@@ -47,7 +48,6 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('mapStateToProps state', state);
   const storeObject = {
     ppeGuides: state.PpeReducer.responseData.ppe_guides,
     ppeItems: state.PpeReducer.responseData.ppe_items,
@@ -58,7 +58,6 @@ const mapStateToProps = (state, ownProps) => {
 
 
 function matchDispatchToProps(dispatch) {
-  console.log('response---', saveResponseData);
   return bindActionCreators(
     {
       updateResponseData: saveResponseData,

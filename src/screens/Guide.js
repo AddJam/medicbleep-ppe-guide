@@ -28,9 +28,9 @@ const Guide = ({ match }) => {
           <PageTitle title={title} />
           <p>{description}</p>
           {canPlay ? (
-            <VideoCotainer>
+            <VideoContainer>
               <ReactPlayer url={video_url} />
-            </VideoCotainer>
+            </VideoContainer>
           ) : (
             <Alert variant="danger">Wrong video URL</Alert>
           )}
@@ -71,7 +71,7 @@ export const GuideSection = styled.div`
   }
 `
 
-export const VideoCotainer = styled.div`
+export const VideoContainer = styled.div`
   margin: 40px 0 35px 0;
   > div {
     margin: 0 auto;

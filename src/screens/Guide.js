@@ -3,10 +3,11 @@ import _ from 'lodash'
 import { Link } from 'react-router-dom'
 import PageTitle from 'components/PageTitle'
 import styled from 'styled-components'
-import { ListGroup } from 'react-bootstrap'
+import { ListGroup, Alert } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { colors } from 'config'
+import ReactPlayer from 'react-player'
 
 const Guide = (props) => {
   const { ppeGuides, match } = props
@@ -15,6 +16,7 @@ const Guide = (props) => {
   if (data) {
     const { fields } = data
     const { title, description, steps, video_url } = fields
+    const canPlay = ReactPlayer.canPlay(video_url)
     return (
       <Fragment>
         <GuideSection>
@@ -23,9 +25,13 @@ const Guide = (props) => {
           </Link>
           <PageTitle title={title} />
           <p>{description}</p>
-          <p>
-            <b>TODO:</b> {video_url}
-          </p>
+          {canPlay ? (
+            <VideoCotainer>
+              <ReactPlayer url={video_url} />
+            </VideoCotainer>
+          ) : (
+            <Alert variant="danger">Wrong video URL</Alert>
+          )}
           {steps && steps.length > 0 ? (
             <ListGroup variant="flush" as="ol">
               {steps.map((data, key) => (
@@ -57,5 +63,15 @@ export const GuideSection = styled.div`
     padding: 0;
     border: none;
     margin-bottom: 10px;
+  }
+  iframe {
+    margin: 0 auto 35px auto;
+  }
+`
+
+export const VideoCotainer = styled.div`
+  margin: 40px 0 35px 0;
+  > div {
+    margin: 0 auto;
   }
 `

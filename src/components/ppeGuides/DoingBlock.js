@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import { Col } from 'react-bootstrap'
 import { colors } from 'config'
 
-const DoingBlock = (props) => {
-  const { title, content } = props
+const DoingBlock = ({ data }) => {
+  const { id, fields } = data
+  const { title, short_description } = fields
   return (
     <Col md={4}>
-      <BlockLink to="/">
+      <BlockLink to={`/guide/${id}`}>
         <H3>{title}</H3>
-        <p>{content}</p>
+        <p>{short_description}</p>
       </BlockLink>
     </Col>
   )

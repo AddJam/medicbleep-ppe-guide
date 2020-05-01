@@ -9,7 +9,7 @@ export const SAVE_DATA = 'saveData'
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case SAVE_DATA:
-      return { ...state, started: action.payload }
+      return { ...state, responseData: action.payload }
     default:
       return state
   }
@@ -22,4 +22,5 @@ export const saveResponseData = (response) => ({
 })
 
 // Selectors
-export const response = (state) => state.Response.responseData
+export const ppeGuidesData = (state) => state.PpeReducer.responseData.ppe_guides
+export const ppeItemsData = (state) => state.PpeReducer.responseData.ppe_items

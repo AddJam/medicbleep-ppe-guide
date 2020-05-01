@@ -12,5 +12,5 @@ p{
 `
 
 export const MainContainer = styled.div`
-  padding: 25px 35px;
+  padding: 25px 35px 200px;
 `

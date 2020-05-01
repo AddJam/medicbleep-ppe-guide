@@ -1,41 +1,47 @@
-import React from 'react'
-import styled from 'styled-components'
-import { colors } from 'config'
-import { Row } from 'react-bootstrap'
-import DoingBlock from 'components/DoingBlock'
+import React, { Fragment, useState } from 'react'
+import PPEItems from 'components/ppeItems'
+import PageTitle from 'components/PageTitle';
+import PPEGuides from 'components/ppeGuides';
 
-const Home = () => {
+const Home = (props) => {
+  const [ppeItems, setPPEItems] = useState([
+    {
+      id: 1,
+      fields: {
+        name: 'Face Shield',
+        description:
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.',
+      },
+    },
+    {
+      id: 2,
+      fields: {
+        name: 'Face Shield 2',
+        description:
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.',
+      },
+    },
+    {
+      id: 3,
+      fields: {
+        name: 'Face Shield 3',
+        description:
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.',
+      },
+    },
+  ]);
+
+  const { ppeGuides } = props;
+  console.log('home--', props);
+
   return (
-    <GraySection>
-      <H2>What are you doing?</H2>
-      <Row>
-        <DoingBlock title="Putting on" content="Safely put your PPE on" />
-        <DoingBlock title="Taking off" content="Removal and disposal" />
-        <DoingBlock title="Source PPE" content="Guide to buying more" />
-      </Row>
-    </GraySection>
+    <Fragment>
+      <PageTitle title="PPE Checklist" />
+      <p>For health and social care settings</p>
+      <PPEGuides ppeGuides={ppeGuides} />
+      <PPEItems items={ppeItems} />
+    </Fragment>
   )
 }
 
 export default Home
-
-const { blue, gray } = colors
-
-export const GraySection = styled.div`
-  color: ${blue};
-  background: ${gray};
-  padding: 35px 25px;
-  border-radius: 12px;
-  margin: 0;
-  p {
-    margin: 0;
-  }
-`
-
-export const H2 = styled.h2`
-  color: ${blue};
-  font-size: 18px;
-  font-family: Arial;
-  font-weight: normal;
-  margin: 0 0 15px 0;
-`
